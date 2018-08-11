@@ -1,4 +1,4 @@
-// File that holds Anime Data
+// File that holds Anime api Data
 
 var anime = [
   {

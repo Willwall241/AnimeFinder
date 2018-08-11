@@ -6,11 +6,13 @@ var anime = require("../data/anime.js");
 // Routes
 
 module.exports = function(app) {
+  
   //a GET route that displays JSON of all possible friends
   app.get('/api/anime', function(req,res){
     res.json(anime);
   });
 
+  //Post route to compare user input to anime api
   app.post('/api/anime', function(req,res){
     var userInput = req.body.scores;
     var scoreDiffArray = [];
