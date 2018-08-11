@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,18 +6,18 @@
   <title>Anime Finder</title>
 
   <!-- Latest compiled and minified CSS & JS -->
+  <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
   <!-- Font Awesome Glyphicons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
 
 </head>
 
 <body>
 
-
+  <!-- Survey questions -->
   <div class="container surveyBody">
 
     <h2>Survey Questions</h2>
@@ -210,38 +210,40 @@
     </div>
   </div>
 
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
   <script type="text/javascript">
-    // Chosen CSS
+
 
 
     // Capture the form inputs
     $("#submit").on("click", function (event) {
       event.preventDefault();
-      console.log("blah")
+      
 
       // Form validation
       function validateForm() {
-        console.log("blah")
+        
         var isValid = true;
         $(".select").each(function () {
 
           if ($(this).val() === "") {
             isValid = false;
 
-            // console.log($(this).val());
 
           }
 
         });
         return isValid;
-        
+
 
       }
 
       // If all required fields are filled
       if (validateForm()) {
-        console.log("blah")
-        // Create an object for the user"s data
+        
+        // Create an object for the user"s input
         var userInput = {
           scores: [
             $("#q1").val(),
@@ -259,9 +261,9 @@
 
         var currentURL = window.location.origin;
 
-        // AJAX post the data to the friends API.
+        // AJAX to compare the userinput to the anime api.
         $.post(currentURL + "/api/anime", userInput, function (data) {
-          console.log("blah")
+          
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(data.animeName);
           $("#match-img").attr("src", data.animeImage);
